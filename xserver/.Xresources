@@ -70,13 +70,20 @@ URxvt*internalBorder:		24
 URxvt*externalBorder:		0
 URxvt.geometry: 		84x22
 
-! perl extensions
-URxvt.perl-lib:			./.dotfiles/xrvt/perls
-URxvt.perl-ext-common: 		keyboard-select
+! perl extensions (keyboard-select from rxvt-perls, font-size from https://github.com/majutsushi/urxvt-font-size)
+URxvt.perl-lib:			./.dotfiles/rxvt/ext
+URxvt.perl-ext-common: 		font-size,keyboard-select
 URxvt.keyboard-select.clipboard:true
 
 ! Keybindings
 URxvt.keysym.M-Escape: 		perl:keyboard-select:activate
+
+! URxvt.keysym.C-Up:     		font-size:incglobal
+! URxvt.keysym.C-Down:   		font-size:decglobal
+URxvt.keysym.C-S-Up:   		font-size:increase
+URxvt.keysym.C-S-Down: 		font-size:decrease
+URxvt.keysym.C-S-R:  		font-size:reset
+URxvt.keysym.C-slash:  		font-size:show
 
 ! Xterm compat (see http://www.netswarm.net/misc/urxvt-xtermcompat.txt)
 *URxvt*keysym.C-Up:		\033[1;5A
@@ -88,8 +95,9 @@ URxvt.keysym.M-Escape: 		perl:keyboard-select:activate
 ! Rofi configs
 ! ------------------------------------------------------------------------------
 
+rofi.bw: 3
 rofi.color-enabled: true
-rofi.color-window: #2e3440, #2e3440, #2e3440
+rofi.color-window: #2e3440, #bf616a, #2e3440
 rofi.color-normal: #2e3440, #d8dee9, #2e3440, #2e3440, #bf616a
 rofi.color-active: #2e3440, #b48ead, #2e3440, #2e3440, #93e5cc
 rofi.color-urgent: #2e3440, #ebcb8b, #2e3440, #2e3440, #ebcb8b
