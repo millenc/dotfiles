@@ -13,3 +13,7 @@ The uber-crappy boostrap script has only been tested on Ubuntu 18.04 and probabl
 
 1. Clone this repo into `~/.dotfiles` (important to keep this name, as some paths are hardcoded to it).
 2. `mv` into the folder and run the `bootstrap.sh` script.
+
+## Credit
+
+The i3 configuration is based on the [i3-starter-pack](https://github.com/addy-dclxvi/i3-starterpack) sample repo.
