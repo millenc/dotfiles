@@ -59,7 +59,7 @@ function stow_config {
     rm -f ~/.config/i3/* || true
 
     # symlink configuration using stow
-	  stow -vt ~/ bash git xserver i3
+	  stow -vt ~/ bash git xserver i3 emacs
 	  stow -vt ~/.fonts fonts
 }
 
@@ -73,12 +73,12 @@ function main {
 
 	  cd $ROOTDIR
 
-	  install_apt_dependencies
-	  install_cht_sh
-	  install_i3_gaps
+	  # install_apt_dependencies
+	  # install_cht_sh
+	  # install_i3_gaps
 	  install_spacemacs
 	  stow_config
-	  clear_font_cache
+	  # clear_font_cache
 }
 
 # There we go!
