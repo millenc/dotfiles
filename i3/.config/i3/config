@@ -200,11 +200,11 @@ assign [class=Firefox] 1
 for_window [class=Firefox] focus
 
 # gaps configuration
-gaps inner 5
+gaps inner 10
 gaps outer 0
 
 # autostart
-exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.png
 
 
 # colour of border, background, text, indicator, and child_border
