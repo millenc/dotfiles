@@ -3,9 +3,10 @@
 ROOTDIR=~/.dotfiles
 
 function install_apt_dependencies {
+    # see for more details about polybar dependencies: https://github.com/jaagr/polybar/wiki/Compiling
     echo "Installing basic dependencies with apt..."
     sudo apt update && \
-        sudo apt install -y curl git emacs25 vim mercurial stow ranger feh
+        sudo apt install -y curl git emacs25 vim mercurial stow ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop
 }
 
 function install_cht_sh {
@@ -44,22 +45,65 @@ function install_i3_gaps {
     cd $ROOTDIR
 }
 
+function install_i3_lock {
+    echo "Installing i3lock from source..."
+
+    cd /tmp
+
+    wget https://github.com/PandorasFox/i3lock-color/archive/2.12.c.tar.gz && tar -xvzf ./2.12.c.tar.gz
+    cd i3lock-color-2.12.c
+
+    autoreconf --force --install
+
+    rm -rf build/
+    mkdir -p build && cd build/
+
+    ../configure \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --disable-sanitizers
+
+    make
+    sudo make install
+
+    cd $ROOTDIR
+}
+
+function install_polybar {
+    echo "Installing polybar..."
+
+    cd /tmp
+
+    wget https://github.com/jaagr/polybar/releases/download/3.3.1/polybar-3.3.1.tar && tar -xvf polybar-3.3.1.tar
+    cd polybar && ./build.sh --all-features -f -A
+
+    cd $ROOTDIR
+}
+
 function install_spacemacs {
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+}
+
+function install_lockscreen {
+    mkdir -p ~/.local/bin
+    stow -vt ~/.local/bin betterlockscreen
+
+    # update cache
+    ~/.local/bin/betterlockscreen -u ~/.dotfiles/images/wallpaper.jpg
 }
 
 function stow_config {
     # Ensure needed folder exist
     mkdir -p ~/.fonts
-    mkdir -p ~/.config/i3
 
     # remove existig config files before symlinking
     rm -f ~/.bashrc || true
     rm -f ~/.profile || true
-    rm -f ~/.config/i3/* || true
+    rm -Rf ~/.config/i3 || true
+    rm -Rf ~/.config/polybar || true
 
     # symlink configuration using stow
-    stow -vt ~/ bash git xserver i3 emacs
+    stow -vt ~/ bash git xserver i3 emacs polybar
     stow -vt ~/.fonts fonts
 }
 
@@ -73,12 +117,15 @@ function main {
 
     cd $ROOTDIR
 
-    install_apt_dependencies
-    install_cht_sh
-    install_i3_gaps
-    install_spacemacs
-    stow_config
-    clear_font_cache
+    # install_apt_dependencies
+    # install_cht_sh
+    # install_i3_gaps
+    # install_polybar
+    # install_spacemacs
+    # install_i3_lock
+    install_lockscreen
+    # stow_config
+    # clear_font_cache
 }
 
 # There we go!

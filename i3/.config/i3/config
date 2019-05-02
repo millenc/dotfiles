@@ -173,47 +173,54 @@ bindsym $mod+r mode "resize"
 # Simulate alt+tab
 bindsym $mod+Tab workspace back_and_forth
 
+# Lock screen
+bindsym $mod+shift+x exec betterlockscreen --lock blur
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-	position top
+# bar {
+#     status_command i3status
+#     position top
 
-	colors {
-        	background #2f343f
-	        statusline #fff
-	        separator #4b5262
+# 	colors {
+#          background #2f343f
+#          statusline #fff
+#          separator #4b5262
 
-		# colour of border, background, and text
-        	focused_workspace	#2f343f	#bf616a	#d8dee8
-	        active_workspace	#2f343f	#2f343f	#d8dee8
-	        inactive_workspace	#2f343f	#2f343f	#d8dee8
-        	urgent_workspace	#2f343f	#ebcb8b	#2f343f
-	}
-}
+#          # colour of border, background, and text
+#          focused_workspace	#2f343f	#bf616a	#d8dee8
+#          active_workspace	#2f343f	#2f343f	#d8dee8
+#          inactive_workspace	#2f343f	#2f343f	#d8dee8
+#          urgent_workspace	#2f343f	#ebcb8b	#2f343f
+# 	}
+# }
 
 # mouse behaviour
 focus_follows_mouse no
 
 # window rules
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 2
 
 # open firefox always on workspace 1 and focus it
 assign [class=Firefox] 1
 for_window [class=Firefox] focus
 
 # gaps configuration
-gaps inner 10
+smart_gaps on
+smart_borders on
+
+gaps inner 5
 gaps outer 0
 
 # autostart
-exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.png
-
+exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.jpg
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id compton
 
 # colour of border, background, text, indicator, and child_border
-client.focused			#bf616a #2f343f #d8dee8 #d6d6d6 #bf616a
-client.focused_inactive		#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.unfocused		#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.urgent			#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.placeholder		#2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.background 		#2f343f
+client.focused			            #bf616a #2f343f #d8dee8 #d6d6d6 #bf616a
+client.focused_inactive		      #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused		            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent			              #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder		          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background 		          #2f343f
