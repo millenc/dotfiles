@@ -43,10 +43,10 @@
 ! Font configuration
 ! ------------------------------------------------------------------------------
 
-URxvt*font:			xft:Bitstream Vera Sans Mono:regular:size=10
-URxvt*boldFont:			xft:Bitstream Vera Sans Mono:bold:size=10
-URxvt*italicFont:		xft:Bitstream Vera Sans Mono:italic:size=10
-URxvt*boldItalicFont: 		xft:Bitstream Vera Sans Mono:bold italic:size=10
+URxvt*font:             xft:Bitstream Vera Sans Mono:regular:size=10
+URxvt*boldFont:			    xft:Bitstream Vera Sans Mono:bold:size=10
+URxvt*italicFont:		    xft:Bitstream Vera Sans Mono:italic:size=10
+URxvt*boldItalicFont:   xft:Bitstream Vera Sans Mono:bold italic:size=10
 
 ! ------------------------------------------------------------------------------
 ! URxvt configs
