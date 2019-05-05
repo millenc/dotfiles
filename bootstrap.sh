@@ -103,7 +103,7 @@ function stow_config {
     rm -Rf ~/.config/polybar || true
 
     # symlink configuration using stow
-    stow -vt ~/ bash git xserver i3 emacs polybar
+    stow -vt ~/ bash git mercurial xserver i3 emacs polybar
     stow -vt ~/.fonts fonts
 }
 
@@ -117,7 +117,7 @@ function main {
 
     cd $ROOTDIR
 
-    install_apt_dependencies
+    # install_apt_dependencies
     # install_cht_sh
     # install_i3_gaps
     # install_polybar
