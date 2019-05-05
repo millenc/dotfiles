@@ -24,11 +24,11 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #bf616a 
-secondary = #e60053
+secondary = #f96868
 alert = #bd2c40
 
 [bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 25
 ;offset-x = 1%
@@ -62,16 +62,16 @@ font-1 = Font Awesome:pixelsize=10;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = filesystem xbacklight pulseaudio xkeyboard cpu memory wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight pulseaudio xkeyboard cpu memory temperature battery date powermenu
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
-;override-redirect = true
+; override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -148,23 +148,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2 
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
+label-visible = %name%
+label-visible-background = ${colors.background}
+label-visible-underline = 
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2 
 
@@ -225,7 +225,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -247,13 +247,13 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = ens33
+interface = enp1s0
 interval = 3.0
 
 ; format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix =
 format-connected-prefix-foreground = ${colors.foreground}
-label-connected = %local_ip%
+label-connected = ""
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -335,34 +335,34 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ACAD
-full-at = 98
+adapter = ADP0
+full-at = 96
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging =  <animation-charging> <label-charging>
+format-charging-underline = 
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = #ffb52a
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-foreground = ${colors.foreground}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-0 = ""
+animation-discharging-1 = ""
+animation-discharging-2 = ""
+animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 750
 
 [module/temperature]
@@ -371,18 +371,18 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-; format-underline = #f50a4d
+format-underline =
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${colors.secondary}
 
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground}
 
 [module/powermenu]
 type = custom/menu
@@ -404,10 +404,10 @@ menu-0-1 =  power off
 menu-0-1-exec = menu-open-2
 
 menu-1-0 =  confirm!
-menu-1-0-exec = sudo reboot
+menu-1-0-exec = systemctl reboot
 
 menu-2-0 =  confirm!
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = systemctl poweroff
 
 [settings]
 screenchange-reload = true
