@@ -232,7 +232,7 @@ gaps inner 5
 gaps outer 0
 
 # autostart
-exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 1366x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 0x0 --rotate normal --output HDMI-2 --off
+exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 1920x0 --rotate normal --output HDMI-2 --off
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id compton
