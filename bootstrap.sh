@@ -6,7 +6,7 @@ function install_apt_dependencies {
     # see for more details about polybar dependencies: https://github.com/jaagr/polybar/wiki/Compiling
     echo "Installing basic dependencies with apt..."
     sudo apt update && \
-        sudo apt install -y curl git emacs25 vim mercurial rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn
+        sudo apt install -y curl git emacs25 vim mercurial rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot
 }
 
 function install_cht_sh {
