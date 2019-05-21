@@ -90,11 +90,11 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+format-prefix =
 format-prefix-foreground = ${colors.foreground}
 ; format-prefix-underline = ${colors.secondary}
 
-label-layout = %layout%
+label-layout = 
 ; label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
