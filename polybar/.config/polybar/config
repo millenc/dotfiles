@@ -62,7 +62,7 @@ font-1 = Font Awesome:pixelsize=10;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = filesystem xbacklight pulseaudio xkeyboard cpu memory temperature battery date powermenu
+modules-right = xkeyboard filesystem xbacklight pulseaudio cpu memory temperature battery date powermenu
 
 tray-position = right
 tray-padding = 2
