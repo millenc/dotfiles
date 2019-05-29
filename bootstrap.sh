@@ -92,6 +92,37 @@ function install_lockscreen {
     ~/.local/bin/betterlockscreen -u ~/.dotfiles/images/wallpaper.jpg
 }
 
+function install_docker {
+    # install needed packages
+    sudo apt-get update && \
+        sudo apt-get install \
+             apt-transport-https \
+             ca-certificates \
+             curl \
+             gnupg-agent \
+             software-properties-common
+
+    # add the docker key
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+    # add the docker repository
+    sudo add-apt-repository \
+         "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+         $(lsb_release -cs) \
+         stable" && \
+        sudo apt-get update
+
+    # install docker
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+    # add current user to the docker group
+    sudo usermod -aG docker $USER
+
+    # install docker-compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
+        sudo chmod +x /usr/local/bin/docker-compose
+}
+
 function stow_config {
     # Ensure needed folder exist
     mkdir -p ~/.fonts
@@ -117,15 +148,16 @@ function main {
 
     cd $ROOTDIR
 
-    # install_apt_dependencies
-    # install_cht_sh
-    # install_i3_gaps
-    # install_polybar
-    # install_spacemacs
-    # install_i3_lock
-    # install_lockscreen
+    install_apt_dependencies
+    install_cht_sh
+    install_i3_gaps
+    install_polybar
+    install_spacemacs
+    install_i3_lock
+    install_lockscreen
+    install_docker
     stow_config
-    # clear_font_cache
+    clear_font_cache
 }
 
 # There we go!
