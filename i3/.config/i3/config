@@ -237,6 +237,7 @@ exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id compton
 exec_always --no-startup-id nm-applet
+exec_always --no-startup-id xautolock -time 5 -locker 'betterlockscreen --lock blur'
 
 # colour of border, background, text, indicator, and child_border
 client.focused			            #bf616a #2f343f #d8dee8 #d6d6d6 #bf616a
