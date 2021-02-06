@@ -51,7 +51,7 @@ values."
      ;; better-defaults
      emacs-lisp
      git
-     (markdown :variables markdown-live-preview-engine 'vmd)
+     (markdown :variables markdown-live-preview-engine 'vmd markdown-command "vmd")
      (python :variables python-test-runner 'pytest)
      terraform
      scala
@@ -340,6 +340,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 ;; Custom: Ignore files present on .hgignore
 ;; (setq helm-ag-command-option " -U" )
+
+;; Custom: Ignore warnings
+(setq warning-minimum-level :emergency)
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
