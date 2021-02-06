@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 # add custom paths/variables
+export TERM='xterm-256color'
 export PATH="${PATH}:${HOME}/.local/bin/"
 export ARTIFACTORY_USER=<user here>
 export ARTIFACTORY_PASSWORD=<password here>
