@@ -10,7 +10,7 @@ function install_apt_dependencies {
     sudo add-apt-repository -y ppa:kgilmer/speed-ricer && \
     sudo add-apt-repository -y ppa:deadsnakes/ppa && \
     sudo apt update && \
-    sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev clang libjsoncpp-dev i3-gaps xautolock blueman npm python3-pip python3.7
+    sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev clang libjsoncpp-dev i3-gaps xautolock blueman npm python3-pip python3.7 keepass2
 
     # install other software (vmd to preview markdown in emacs)
     sudo npm install -g vmd
