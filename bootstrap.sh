@@ -19,30 +19,6 @@ function install_cht_sh {
     sudo chmod +x /usr/local/bin/cht.sh
 }
 
-function install_i3_lock {
-    echo "Installing i3lock from source..."
-
-    cd /tmp
-
-    wget https://github.com/PandorasFox/i3lock-color/archive/2.12.c.tar.gz && tar -xvzf ./2.12.c.tar.gz
-    cd i3lock-color-2.12.c
-
-    autoreconf --force --install
-
-    rm -rf build/
-    mkdir -p build && cd build/
-
-    ../configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --disable-sanitizers
-
-    make
-    sudo make install
-
-    cd $ROOTDIR
-}
-
 function install_polybar {
     echo "Installing polybar..."
 
@@ -57,14 +33,6 @@ function install_polybar {
 function install_spacemacs {
     sudo rm -rf ~/.emacs.d
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-}
-
-function install_lockscreen {
-    mkdir -p ~/.local/bin
-    stow -vt ~/.local/bin betterlockscreen
-
-    # update cache
-    ~/.local/bin/betterlockscreen -u ~/.dotfiles/images/wallpaper.jpg
 }
 
 function install_docker {
@@ -127,8 +95,6 @@ function main {
     install_cht_sh
     install_polybar
     install_spacemacs
-    install_i3_lock
-    install_lockscreen
     install_docker
     stow_config
     clear_font_cache
