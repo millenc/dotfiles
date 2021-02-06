@@ -9,7 +9,7 @@ function install_apt_dependencies {
     echo "Installing basic dependencies with apt..."
     sudo add-apt-repository -y ppa:kgilmer/speed-ricer && \
     sudo apt update && \
-        sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev clang libjsoncpp-dev i3-gaps-wm
+        sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev clang libjsoncpp-dev i3-gaps
 }
 
 function install_cht_sh {
