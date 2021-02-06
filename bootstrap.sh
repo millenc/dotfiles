@@ -1,12 +1,15 @@
 #!/bin/bash
 
+set -e
+
 ROOTDIR=~/.dotfiles
 
 function install_apt_dependencies {
     # see for more details about polybar dependencies: https://github.com/jaagr/polybar/wiki/Compiling
     echo "Installing basic dependencies with apt..."
+    sudo add-apt-repository -y ppa:kgilmer/speed-ricer && \
     sudo apt update && \
-        sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev
+        sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev clang libjsoncpp-dev i3-gaps-wm
 }
 
 function install_cht_sh {
@@ -14,35 +17,6 @@ function install_cht_sh {
 
     curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh > /dev/null
     sudo chmod +x /usr/local/bin/cht.sh
-}
-
-function install_i3_gaps {
-    echo "Installing i3-gaps window manager from source..."
-
-    # Source: https://gist.github.com/dabroder/813a941218bdb164fb4c178d464d5c23
-    sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake i3status suckless-tools rofi imagemagick-6.q16
-
-    cd /tmp
-
-    # clone the repository
-    git clone https://www.github.com/Airblader/i3 i3-gaps
-    cd i3-gaps
-
-    # pin the lastest release version
-    git checkout gaps-next
-
-    # compile & install
-    autoreconf --force --install
-    rm -rf build/
-    mkdir -p build && cd build/
-
-    # Disabling sanitizers is important for release versions!
-    # The prefix and sysconfdir are, obviously, dependent on the distribution.
-    ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-    make
-    sudo make install
-
-    cd $ROOTDIR
 }
 
 function install_i3_lock {
@@ -74,13 +48,14 @@ function install_polybar {
 
     cd /tmp
 
-    wget https://github.com/jaagr/polybar/releases/download/3.4.1/polybar-3.4.1.tar && tar -xvf polybar-3.4.1.tar
-    cd polybar && ./build.sh --all-features -f -A
+    wget https://github.com/jaagr/polybar/releases/download/3.5.4/polybar-3.5.4.tar.gz && tar -xzvf polybar-3.5.4.tar.gz
+    cd polybar-3.5.4 && ./build.sh --all-features -f -A
 
     cd $ROOTDIR
 }
 
 function install_spacemacs {
+    sudo rm -rf ~/.emacs.d
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 }
 
@@ -150,7 +125,6 @@ function main {
 
     install_apt_dependencies
     install_cht_sh
-    install_i3_gaps
     install_polybar
     install_spacemacs
     install_i3_lock
