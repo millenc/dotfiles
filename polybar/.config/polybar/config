@@ -48,15 +48,22 @@ border-color = #00000000
 ; border-right = 4
 ; border-bottom = 3
 
-padding-left = 2
-padding-right = 2
+padding-left = 4
+padding-right = 4
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 2
+module-margin-right = 2
 
-font-0 = Hack:pixelsize=9;1
+; font-0 = "UbuntuMono Nerd Font:pixelsize=10;2"
+; font-1 = "UbuntuMono Nerd Font:size=16;3"
+
+; font-0 = Hack Nerd Font:pixelsize=10:antialias=true;2.5
+; font-1 = Hack Nerd Font:style=Regular:pixelsize=17:antialias=true;3
+; font-1 = Hack Nerd Font:style=Regular:pixelsize=17:antialias=true;3
+; font-0 = Hack:pixelsize=9;1
+font-0 = Misc Ohsnap:pixelsize=9;1
+font-1 = Font Awesome:pixelsize=9;1
 ;Source Code Pro:pixelsize=10;1
-font-1 = Font Awesome:pixelsize=10;1
 ; font-1 = fixed:pixelsize=9;1
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; font-2 = siji:pixelsize=9;1
@@ -144,7 +151,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 4
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -152,11 +159,11 @@ label-mode-background = ${colors.primary}
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 4
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-padding = 2 
+label-unfocused-padding = 4 
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
@@ -167,7 +174,7 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2 
+label-urgent-padding = 4 
 
 ; Separator in between workspaces
 ; label-separator = |

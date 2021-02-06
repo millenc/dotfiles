@@ -6,7 +6,7 @@ function install_apt_dependencies {
     # see for more details about polybar dependencies: https://github.com/jaagr/polybar/wiki/Compiling
     echo "Installing basic dependencies with apt..."
     sudo apt update && \
-        sudo apt install -y curl git emacs25 vim mercurial rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen
+        sudo apt install -y curl git emacs vim rxvt-unicode stow net-tools ranger feh cmake libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev xcb-proto python3-xcbgen libpam0g-dev libjpeg-turbo8-dev compton htop fonts-font-awesome fonts-inconsolata openvpn scrot pwgen libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev libxcb-composite0 libxcb-composite0-dev libxcb-ewmh-dev
 }
 
 function install_cht_sh {
@@ -20,7 +20,7 @@ function install_i3_gaps {
     echo "Installing i3-gaps window manager from source..."
 
     # Source: https://gist.github.com/dabroder/813a941218bdb164fb4c178d464d5c23
-    sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-*-dev i3status suckless-tools rofi
+    sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake i3status suckless-tools rofi imagemagick-6.q16
 
     cd /tmp
 
@@ -29,7 +29,7 @@ function install_i3_gaps {
     cd i3-gaps
 
     # pin the lastest release version
-    git checkout 4.16.1
+    git checkout gaps-next
 
     # compile & install
     autoreconf --force --install
@@ -74,7 +74,7 @@ function install_polybar {
 
     cd /tmp
 
-    wget https://github.com/jaagr/polybar/releases/download/3.3.1/polybar-3.3.1.tar && tar -xvf polybar-3.3.1.tar
+    wget https://github.com/jaagr/polybar/releases/download/3.4.1/polybar-3.4.1.tar && tar -xvf polybar-3.4.1.tar
     cd polybar && ./build.sh --all-features -f -A
 
     cd $ROOTDIR
@@ -134,7 +134,7 @@ function stow_config {
     rm -Rf ~/.config/polybar || true
 
     # symlink configuration using stow
-    stow -vt ~/ bash git mercurial xserver i3 emacs polybar
+    stow -vt ~/ bash git xserver i3 emacs polybar
     stow -vt ~/.fonts fonts
 }
 

@@ -116,5 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# add custom paths
+# add custom paths/variables
 export PATH="${PATH}:${HOME}/.local/bin/"
+export ARTIFACTORY_USER=<user here>
+export ARTIFACTORY_PASSWORD=<password here>
+export PIP_EXTRA_INDEX_URL=https://${ARTIFACTORY_USER}:${ARTIFACTORY_PASSWORD}@<artifactory extra index url here>
+export XDG_CURRENT_DESKTOP=GNOME
