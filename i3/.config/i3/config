@@ -212,20 +212,30 @@ smart_borders on
 gaps inner 5
 gaps outer 0
 
-# autostart
+
+# exec_always --no-startup-id xrandr --output eDP-1 --primary --output HDMI-1 --off
 
 # Office (laptop screen enabled an to the right)
 # exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 1920x0 --rotate normal --output HDMI-2 --off
 
-# Office (laptop screen disabled)
+# Office mode (laptop screen disabled and 24' monitor)
 # exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --off --output HDMI-2 --off
+# bindsysm $mod+shift+j exec --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output eDP-1 --off --output HDMI-2 --off
 
 # Home (laptop screen enabled)
 # exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 3440x1440 --rate 60.00 --pos 1366x0 --rotate normal --output eDP-1 --mode 1366x768 --pos 0x312 --rotate normal --output HDMI-2 --off
 
-# Home (laptop screen disabled) with Xiaomi
-exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 3440x1440 --rate 60.00 --pos 1366x0 --rotate normal --output eDP-1 --off --output HDMI-2 --off
+# Home mode (laptop screen disabled and external monitor)
+# exec_always --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --mode 3440x1440 --rate 60.00 --pos 1366x0 --rotate normal --output eDP-1 --off --output HDMI-2 --off
+bindsym $mod+shift+h exec --no-startup-id xrandr --output DP-1 --off --output HDMI-1 --primary --auto --rate 60.00 --pos 1366x0 --rotate normal --output eDP-1 --off --output HDMI-2 --off
 
+# Laptop only mode (no HDMI monitor)
+bindsym $mod+shift+n exec --no-startup-id xrandr --output eDP-1 --auto --primary && xrandr --output HDMI-1 --off
+
+# Take screenshot
+bindsym Print exec flameshot gui
+
+# autostart
 exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/images/wallpaper.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id compton
