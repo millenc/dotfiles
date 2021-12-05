@@ -30,7 +30,14 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(octave
+     ruby
+     (go :variables go-tab-width 4 go-format-before-save t)
+     (groovy :variables
+             groovy-backend 'lsp
+             groovy-lsp-jar-path "~/.local/lib/groovy-language-server-all.jar")
+     react
+     typescript
      csv
      rust
      nginx
@@ -273,7 +280,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -294,7 +301,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -338,7 +345,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (setq grep-find-ignored-files (list "*.c" "*.pyc" "*.o" "*.so"))
 (setq grep-find-ignored-directories (list "build"))
 
-;; Custom: Ignore files present on .hgignore
+;; Custom: Configure search
+(setq helm-ag-base-command "rg --vimgrep --no-heading --smart-case")
 ;; (setq helm-ag-command-option " -U" )
 
 ;; Custom: Ignore warnings
@@ -351,6 +359,15 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; Disable smartparens globally (on Markdown mode)
+  (require 'smartparens)
+  ;; (remove-hook 'prog-mode-hook #'smartparens-mode)
+  (remove-hook 'markdown-mode-hook #'smartparens-mode)
+  (spacemacs/toggle-smartparens-globally-off)
+
+  ;; Enable on certain modes
+  ;; (add-hook 'python-mode-hook '(lambda () (smartparens-mode 1)) t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -369,3 +386,24 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   (quote
+    (helm-gtags ggtags counsel-gtags counsel swiper ivy csv-mode toml-mode racer flycheck-rust cargo rust-mode nginx-mode hcl-mode powerline spinner org-category-capture alert log4e gntp org-plus-contrib markdown-mode skewer-mode simple-httpd multiple-cursors js2-mode hydra lv parent-mode projectile request haml-mode gitignore-mode flycheck pkg-info epl flx highlight magit transient git-commit with-editor smartparens iedit anzu evil goto-chg undo-tree sbt-mode scala-mode json-mode tablist magit-popup docker-tramp json-snatcher json-reformat web-completion-data dash-functional tern pos-tip company bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s helm avy helm-core async auto-complete popup vmd-mode sql-indent lua-mode jinja2-mode company-ansible ansible-doc ansible company-quickhelp yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org terraform-mode tagedit spaceline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file noflet neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode js2-refactor js-doc indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elisp-slime-nav dumb-jump dockerfile-mode docker diminish define-word cython-mode company-web company-tern company-statistics company-anaconda column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
