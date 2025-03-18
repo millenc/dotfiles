@@ -38,8 +38,8 @@ vim.keymap.set("n", "<leader>bY", ":%y<CR>", { desc = "Yank buffer" })
 vim.keymap.set("n", "<leader>bP", "gg0vGP", { desc = "Replace yanked buffer" })
 
 -- windows
-vim.keymap.set("n", "<leader>wv", "<C-w>v<C-w>l", { desc = "Create a new window (vertical)" })
-vim.keymap.set("n", "<leader>ws", "<C-w>s<C-w>j", { desc = "Create a new window (horizontal)" })
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Create a new window (vertical)" })
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Create a new window (horizontal)" })
 vim.keymap.set("n", "<leader>wd", "<C-w>q", { desc = "Close a window" })
 vim.keymap.set("n", "<leader>wm", "<C-w>o", { desc = "Maximize window" })
 vim.keymap.set("n", "<leader>wn", "<C-w>n", { desc = "Create a new window and start editing" })
