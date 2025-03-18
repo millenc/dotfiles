@@ -79,9 +79,10 @@ function stow_config {
     rm -f ~/.profile || true
     rm -Rf ~/.config/i3 || true
     rm -Rf ~/.config/polybar || true
+    rm -Rf ~/.config/nvim || true
 
     # symlink configuration using stow
-    stow -vt ~/ bash git xserver i3 emacs polybar
+    stow -vt ~/ bash git xserver i3 emacs nvim polybar
     stow -vt ~/.fonts fonts
 }
 
